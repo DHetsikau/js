@@ -1,10 +1,5 @@
 function countBs(s){
-	var n = 0;
-	for (var i = 0; i < s.length; i++) {
-		if (s.charAt(i) === "B")
-			n++;
-	}
-	return n;
+	return countChar(s, "B");
 }
 
 function countChar(s, c){
@@ -14,4 +9,4 @@ function countChar(s, c){
 			n++;
 	}
 	return n;
-}
+};
