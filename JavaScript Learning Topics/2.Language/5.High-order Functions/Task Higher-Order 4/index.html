@@ -10,24 +10,28 @@
   <script>
 
 function every(array, predicate) {
-	var bool = true;
-	array.forEach(function(element){
-		if (!predicate(element))
-			bool = false;
-	});	
-	return bool;
+	var i = 0;
+	while ( i < array.length ) {
+		if (!predicate(array[i]))
+			return false;
+		i++;
+	}
+	if (i === array.length) 
+		return true;
 }
  
 function some(array, predicate) {
-	var bool = false;
-	array.forEach(function(element){
-		if (predicate(element))
-			bool = true;
-	});
-	return bool;
+	var i = 0;
+	while ( i < array.length ) {
+		if (predicate(array[i]))
+			return true;
+		i++;
+	}
+	if (i === array.length) 
+		return false;
 }
 
-console.log(every([NaN, NaN, NaN], isNaN)); // → true
+console.log(every([2, NaN, NaN], isNaN)); // → true
 console.log(every([NaN, NaN, 4], isNaN)); // → false
 console.log(some([NaN, 3, 4], isNaN)); // → true
 console.log(some([2, 3, 4], isNaN)); // → false
