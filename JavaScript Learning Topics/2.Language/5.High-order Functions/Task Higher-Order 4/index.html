@@ -16,8 +16,7 @@ function every(array, predicate) {
 			return false;
 		i++;
 	}
-	if (i === array.length) 
-		return true;
+	return true;
 }
  
 function some(array, predicate) {
@@ -27,8 +26,7 @@ function some(array, predicate) {
 			return true;
 		i++;
 	}
-	if (i === array.length) 
-		return false;
+	return false;
 }
 
 console.log(every([2, NaN, NaN], isNaN)); // → true
