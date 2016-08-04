@@ -10,8 +10,11 @@
   <script>
 
 function MultiplicatorUnitFailure() {
-	throw new Error("not lucky");
+	this.message = "not lucky";
 }
+
+MultiplicatorUnitFailure.prototype = Object.create(Error.prototype);
+MultiplicatorUnitFailure.prototype.name = "MultiplicatorUnitFailure"
 
 function primitiveMultiply(a, b) {
   if (Math.random() < 0.5)
@@ -25,7 +28,10 @@ function reliableMultiply(a, b) {
 		try {
 			return primitiveMultiply(a, b);
 		} catch (error) {
-			console.log("Something went wrong: " + error);
+			if (error instanceof MultiplicatorUnitFailure) 
+				console.log("Something went wrong: " + error);
+			else
+				throw error;
 		}
 	}
 }
